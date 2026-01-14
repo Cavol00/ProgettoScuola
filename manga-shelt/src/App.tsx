@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// 1. INTERFACCIA: Spieghiamo a TypeScript com'è fatto un singolo Manga
+// Jikan API ci restituisce oggetti fatti così:
+interface Manga {
+  mal_id: number;
+  title: string;
+  images: {
+    jpg: {
+      image_url: string;
+    }
+  };
+  score: number;
 }
 
-export default App
+function App() {
+  // 2. STATO TIPIZZATO: Diciamo a React che questa lista conterrà SOLO oggetti di tipo "Manga"
+  // <Manga[]> significa "Array di Manga"
+  const [mangaList, setMangaList] = useState<Manga[]>([]);
+
+  useEffect(() => {
+    fetch('https://api.jikan.moe/v4/top/manga')
+      .then((response) => response.json())
+      .then((data) => {
+        // Jikan restituisce un oggetto con una proprietà "data" che contiene l'array
+        setMangaList(data.data);
+      })
+      .catch((error) => console.error("Errore:", error));
+  }, []);
+
+  return (
+    <div className="container">
+      <h1>📚 Manga Shelt (TS Version)</h1>
+      
+      <div className="grid">
+        {mangaList.map((manga) => (
+          <div key={manga.mal_id} className="card">
+            
+            <img 
+              src={manga.images.jpg.image_url} 
+              alt={manga.title} 
+            />
+            
+            <h3>{manga.title}</h3>
+            
+            {/* Se il punteggio è null (capita), mostriamo 'N/A' */}
+            <p>⭐ {manga.score ?? 'N/A'}</p>
+
+            <button>Aggiungi alla Libreria</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;

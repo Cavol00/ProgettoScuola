@@ -1,62 +1,180 @@
-/* Centra tutto e dai un colore di sfondo scuro moderno */
+/* src/App.css */
 
-body {
-    background-color: #1a1a1a;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-}
 
-.container {
+/* --- CONTENITORE PRINCIPALE --- */
+
+.home-container {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    padding: 20px;
+    /* Sfondo generale leggermente grigio per far risaltare le card bianche */
+    background-color: #f4f4f4;
 }
 
 
-/* La Griglia Magica: si adatta allo schermo */
+/* --- LA GRIGLIA A DUE COLONNE --- */
 
-.grid {
+.manga-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 1fr 1fr;
+    /* 2 colonne su desktop */
     gap: 20px;
     padding: 20px 0;
 }
 
 
-/* La scheda del singolo fumetto */
+/* --- LA CARD (Stile MangaWorld) --- */
 
-.card {
-    background-color: #2a2a2a;
-    border-radius: 10px;
-    padding: 10px;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    /* Effetto zoom quando passi il mouse */
-}
-
-.card img {
-    width: 100%;
-    border-radius: 5px;
-    height: 300px;
-    object-fit: cover;
-    /* Ritaglia l'immagine per farla stare bene */
-}
-
-button {
-    background-color: #646cff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+.manga-card {
+    display: flex;
+    /* Sfondo bianco e bordo sottile grigio */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    /* Angoli leggermente arrotondati */
+    overflow: hidden;
+    height: 220px;
+    /* Altezza fissa */
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-button:hover {
-    background-color: #535bf2;
+
+/* --- EFFETTO HOVER (Bordo Arancione) --- */
+
+.manga-card:hover {
+    /* Bordo arancione vivo come nell'esempio */
+    border-color: #ff6600;
+    /* Leggera ombra arancione per enfatizzare */
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+    /* Si alza leggermente */
+    transform: translateY(-2px);
+}
+
+
+/* --- LATO SINISTRO: IMMAGINE --- */
+
+.card-image {
+    width: 150px;
+    /* Larghezza fissa */
+    flex-shrink: 0;
+    position: relative;
+    background: #eee;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* --- LATO DESTRO: CONTENUTO --- */
+
+.card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+
+/* Titolo Nero/Scuro */
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    /* Testo scuro */
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-title:hover {
+    color: #ff6600;
+    /* Diventa arancione al passaggio */
+}
+
+
+/* Blocco delle Info */
+
+.card-meta {
+    font-size: 0.85rem;
+    color: #555;
+    /* Grigio scuro */
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+
+/* ETICHETTE BLU (Tipo:, Stato:) - Come nell'esempio */
+
+.meta-label {
+    color: #007bff;
+    /* Blu brillante */
+    font-weight: 600;
+    /* Un po' più grassetto */
+}
+
+.card-authors {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-synopsis {
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.4;
+    margin: 0;
+    /* Taglia il testo dopo 4 righe */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* --- BARRA DI RICERCA (Adeguata al nuovo stile chiaro) --- */
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    padding: 10px 15px;
+    width: 400px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    background: #fff;
+}
+
+.search-button {
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* --- MOBILE --- */
+
+@media (max-width: 900px) {
+    .manga-grid {
+        grid-template-columns: 1fr;
+    }
 }

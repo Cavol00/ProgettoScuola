@@ -11,16 +11,17 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
       <AuthProvider>
         <Navbar />
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/library" element={<Library />} />
+            <Route path="/libreria" element={<Library />} />
             <Route path="/login" element={<Login />} />
             <Route path="/manga/:id" element={<MangaDetails />} />
             <Route path="/profile" element={<Profile />} />
+
           </Routes>
         </div>
       </AuthProvider>

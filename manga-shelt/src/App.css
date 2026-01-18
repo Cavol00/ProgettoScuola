@@ -472,6 +472,159 @@ button:hover,
 }
 
 
+/* --- NAVBAR "MISTIQUE" (Vetro & Ordine) --- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Spinge logo a sx e utente a dx */
+    align-items: center;
+    padding: 0.8rem 3rem;
+    /* Un po' più compatta */
+    /* Effetto Vetro Satinato */
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    /* Sfocatura sfondo */
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(255, 182, 193, 0.15);
+    /* Ombra rosa leggerissima */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* GRUPPO SINISTRA: LOGO */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 45px;
+    /* Altezza fissa per il logo */
+    width: auto;
+    object-fit: contain;
+    /* Opzionale: se il tuo logo è quadrato e vuoi farlo tondo */
+    /* border-radius: 50%; */
+}
+
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 900;
+    /* Gradiente sul testo */
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+
+/* GRUPPO CENTRO: LINK DI NAVIGAZIONE */
+
+.navbar-center {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #666;
+    font-weight: 700;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ff758c;
+}
+
+
+/* Linea rosa che appare sotto al link quando passi il mouse */
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ff758c;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+/* GRUPPO DESTRA: UTENTE & LOGOUT */
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-greeting {
+    font-weight: 700;
+    color: #555;
+    font-size: 1rem;
+}
+
+.user-name {
+    color: #ff758c;
+    /* Nome in rosa */
+}
+
+
+/* Bottone ESCI piccolo ed elegante */
+
+.btn-logout-nav {
+    background: white;
+    border: 2px solid #ff9a9e;
+    color: #ff758c;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-logout-nav:hover {
+    background: #ff758c;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);
+}
+
+
+/* Bottone Rimuovi specifico per la libreria */
+
+.remove-btn {
+    background: white;
+    /* Sfondo bianco */
+    color: #ff4d4d;
+    /* Testo rosso */
+    border: 2px solid #ff4d4d;
+    margin-top: auto;
+    /* Spinge il bottone in basso */
+    width: 100%;
+}
+
+.remove-btn:hover {
+    background: #ff4d4d;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+    transform: translateY(-2px);
+}
+
+
 /* --- MOBILE --- */
 
 @media (max-width: 900px) {

@@ -1,63 +1,159 @@
-/* src/App.css */
+/* src/App.css - TEMA "MISTIQUE" (Rosa Pastello Soft) */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* --- SFONDO E GENERALE --- */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    /* Font rotondo essenziale per questo stile */
+    color: #5e5e5e;
+    /* Grigio caldo, non nero */
+    /* SFONDO SOFT "ETEREO" (Come la foto Mistique) */
+    background: linear-gradient(135deg, #fff5f7 0%, #fff0f3 50%, #ffe6ea 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    color: #4a4a4a;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* --- NAVBAR (BIANCA PULITA) --- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Quasi solido */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(255, 182, 193, 0.15);
+    /* Ombra rosa leggerissima */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    /* Colore rosa acceso per il logo */
+    color: #ff758c;
+    text-shadow: 2px 2px 0px #ffeef0;
+}
+
+.navbar-links a {
+    margin-left: 25px;
+    color: #777;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #ff758c;
+}
+
+
+/* --- BOTTONI "PETALO" --- */
+
+button,
+.search-button,
+.add-button {
+    /* Gradiente ispirato all'immagine dei petali */
+    background: linear-gradient(to right, #ff9a9e 0%, #ff758c 100%);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    /* Pillola completa */
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 5px 15px rgba(255, 117, 140, 0.3);
+    /* Glow rosa */
+    transition: all 0.3s ease;
+}
+
+button:hover,
+.search-button:hover,
+.add-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 117, 140, 0.5);
+}
 
 
 /* --- CONTENITORE PRINCIPALE --- */
 
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .home-container h1 {
-    color: #333;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    color: #ff758c;
+    /* Titolo principale rosa */
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2.5rem;
 }
 
 
-/* --- LA GRIGLIA A DUE COLONNE --- */
+/* --- LA GRIGLIA --- */
 
 .manga-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* 2 colonne su desktop */
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    /* Responsive automatico */
+    gap: 30px;
     padding: 20px 0;
 }
 
 
-/* --- LA CARD (Stile MangaWorld) --- */
+/* --- LA CARD (Stile Nuvola) --- */
 
 .manga-card {
     display: flex;
-    /* Sfondo bianco e bordo sottile grigio */
     background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    /* Angoli leggermente arrotondati */
+    border: none;
+    /* Nessun bordo duro */
+    border-radius: 20px;
+    /* Angoli molto morbidi */
     overflow: hidden;
-    height: 220px;
-    /* Altezza fissa */
-    transition: all 0.2s ease-in-out;
+    height: 240px;
+    /* L'ombra è fondamentale per questo stile */
+    box-shadow: 0 10px 40px rgba(230, 180, 190, 0.2);
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-
-/* --- EFFETTO HOVER (Bordo Arancione) --- */
-
 .manga-card:hover {
-    /* Bordo arancione vivo come nell'esempio */
-    border-color: #ff6600;
-    /* Leggera ombra arancione per enfatizzare */
-    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
-    /* Si alza leggermente */
-    transform: translateY(-2px);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(255, 150, 170, 0.3);
 }
 
 
-/* --- LATO SINISTRO: IMMAGINE --- */
+/* LATO SINISTRO: IMMAGINE */
 
 .card-image {
-    width: 150px;
-    /* Larghezza fissa */
+    width: 160px;
     flex-shrink: 0;
     position: relative;
-    background: #eee;
 }
 
 .card-image img {
@@ -67,105 +163,312 @@
 }
 
 
-/* --- LATO DESTRO: CONTENUTO --- */
+/* LATO DESTRO: CONTENUTO */
 
 .card-content {
-    padding: 15px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex-grow: 1;
-    min-width: 0;
 }
 
-
-/* Titolo Nero/Scuro */
-
 .card-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
-    /* Testo scuro */
-    margin: 0 0 10px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #4a4a4a;
+    margin: 0 0 8px 0;
 }
 
 .card-title:hover {
-    color: #ff6600;
-    /* Diventa arancione al passaggio */
+    color: #ff758c;
 }
-
-
-/* Blocco delle Info */
 
 .card-meta {
-    font-size: 0.85rem;
-    color: #555;
-    /* Grigio scuro */
-    margin-bottom: 8px;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 5px;
 }
 
 
-/* ETICHETTE BLU (Tipo:, Stato:) - Come nell'esempio */
+/* Etichette evidenziate in rosa */
 
 .meta-label {
-    color: #007bff;
-    /* Blu brillante */
-    font-weight: 600;
-    /* Un po' più grassetto */
-}
-
-.card-authors {
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #ff758c;
+    font-weight: 700;
+    margin-right: 5px;
 }
 
 .card-synopsis {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #777;
-    line-height: 1.4;
-    margin: 0;
-    /* Taglia il testo dopo 4 righe */
+    line-height: 1.6;
+    margin-top: 10px;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 
-/* --- BARRA DI RICERCA (Adeguata al nuovo stile chiaro) --- */
+/* --- BARRA DI RICERCA --- */
 
 .search-container {
     display: flex;
     justify-content: center;
-    gap: 0;
-    margin-bottom: 30px;
+    margin: 40px 0;
 }
 
 .search-input {
-    padding: 10px 15px;
-    width: 400px;
-    border: 1px solid #ccc;
-    border-right: none;
-    border-radius: 4px 0 0 4px;
+    padding: 15px 25px;
+    width: 500px;
+    border: 2px solid transparent;
+    border-radius: 50px 0 0 50px;
     outline: none;
-    background: #fff;
+    background: #ffffff;
+    font-size: 1rem;
+    box-shadow: 0 5px 20px rgba(255, 182, 193, 0.1);
+    transition: border 0.3s;
+}
+
+.search-input:focus {
+    border-color: #ffc3d0;
+    /* Bordo rosa focus */
 }
 
 .search-button {
-    padding: 10px 25px;
-    background-color: #007bff;
-    color: white;
-    border: 1px solid #007bff;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 50px 50px 0;
+    padding: 0 40px;
+    font-size: 1.1rem;
+}
+
+
+/* --- FILTRI --- */
+
+.filters-bar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(255, 182, 193, 0.15);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter-group select {
+    padding: 10px 15px;
+    border: 1px solid #ffeef0;
+    border-radius: 20px;
+    background-color: #fffafb;
+    color: #666;
     cursor: pointer;
+    font-family: inherit;
+}
+
+.filter-group select:hover {
+    border-color: #ffb7b2;
+}
+
+
+/* Reset button delicato */
+
+.reset-btn {
+    background: transparent !important;
+    color: #ff758c !important;
+    box-shadow: none;
+    border: 1px dashed #ffb7b2 !important;
+}
+
+.reset-btn:hover {
+    background: #ffeef0 !important;
+}
+
+
+/* --- PAGINA DETTAGLIO --- */
+
+.details-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(255, 182, 193, 0.2);
+}
+
+.details-header {
+    border-bottom: 2px solid #fff0f3;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-header h1 {
+    color: #ff758c;
+    font-size: 2.2rem;
+}
+
+.details-score {
+    background: #ff758c;
+    /* Voto in rosa */
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
     font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+}
+
+.details-grid {
+    display: flex;
+    gap: 50px;
+}
+
+.details-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.details-cover {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.big-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    background: #fff5f7;
+    /* Box informazioni rosa chiarissimo */
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.info-box p {
+    margin: 12px 0;
+    border-bottom: 1px solid #ffe6ea;
+    padding-bottom: 8px;
+    color: #666;
+}
+
+.details-synopsis {
+    line-height: 1.9;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+
+/* --- PAGINA PROFILO --- */
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.profile-card {
+    background: white;
+    width: 550px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(255, 182, 193, 0.25);
+    overflow: hidden;
+    text-align: center;
+}
+
+.profile-header {
+    padding: 40px;
+    background: linear-gradient(to bottom, #fff, #fff5f7);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    /* Avatar gradiente rosa */
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 10px 20px rgba(255, 154, 158, 0.4);
+}
+
+.profile-card h2 {
+    color: #4a4a4a;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.profile-card p {
+    color: #888;
+}
+
+.section-title {
+    color: #ff758c;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+
+/* Sezione recenti nel profilo */
+
+.recent-section {
+    padding: 30px;
+    background-color: white;
+}
+
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.recent-item img {
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.recent-item:hover img {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 117, 140, 0.3);
+}
+
+.recent-title {
+    color: #666 !important;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+
+/* Tasto Logout */
+
+.logout-btn {
+    margin-top: 10px;
+    background: white !important;
+    border: 2px solid #ff758c !important;
+    color: #ff758c !important;
+    box-shadow: none;
+}
+
+.logout-btn:hover {
+    background: #ff758c !important;
+    color: white !important;
 }
 
 
@@ -175,327 +478,9 @@
     .manga-grid {
         grid-template-columns: 1fr;
     }
-}
-
-
-/* --- PAGINA DETTAGLIO --- */
-
-.details-container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.details-header {
-    border-bottom: 2px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.details-header h1 {
-    margin: 0;
-    color: #333;
-    font-size: 2rem;
-}
-
-.details-score {
-    background: #ffc107;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.details-grid {
-    display: flex;
-    gap: 40px;
-}
-
-.details-sidebar {
-    width: 300px;
-    flex-shrink: 0;
-}
-
-.details-cover {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-}
-
-.big-btn {
-    width: 100%;
-    /* Bottone largo tutta la colonna */
-    padding: 15px;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-.info-box {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-.info-box p {
-    margin: 10px 0;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
-    color: #555;
-}
-
-.details-content {
-    flex-grow: 1;
-}
-
-.details-synopsis {
-    line-height: 1.8;
-    color: #444;
-    font-size: 1.05rem;
-    white-space: pre-wrap;
-}
-
-.score-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: rgba(0, 0, 0, 0.8);
-    /* Sfondo nero trasparente */
-    color: #ffc107;
-    /* Giallo Stella */
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.85rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 2;
-    /* Assicura che stia sopra l'immagine */
-}
-
-
-/* --- FILTRI --- */
-
-.filters-bar {
-    display: flex;
-    gap: 20px;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    align-items: center;
-}
-
-.filter-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.filter-group label {
-    font-weight: bold;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-.filter-group select {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    outline: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.filter-group select:hover {
-    border-color: #007bff;
-}
-
-.reset-btn {
-    padding: 5px 15px;
-    font-size: 0.8rem;
-    background: #eee;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #333;
-}
-
-.reset-btn:hover {
-    background: #ddd;
-    color: red;
-}
-
-
-/* --- PAGINA PROFILO --- */
-
-.profile-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 40px;
-}
-
-.profile-card {
-    background: white;
-    width: 500px;
-    /* Un po' più largo per far stare le copertine */
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border: 1px solid #e0e0e0;
-}
-
-.profile-header {
-    padding: 30px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-}
-
-.profile-avatar {
-    width: 70px;
-    height: 70px;
-    background-color: #333;
-    /* Grigio scuro elegante */
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px auto;
-}
-
-.profile-card {
-    color: #333;
-    /* Grigio scuro per il testo base */
-}
-
-
-/* Assicuriamoci che anche i titoli e i link siano scuri */
-
-.profile-card h2,
-.profile-card h3,
-.profile-card p {
-    color: #333;
-}
-
-
-/* Corregge i titoli dei manga (link) sotto le immagini */
-
-.recent-title {
-    color: #333 !important;
-    /* !important forza il colore se c'è conflitto */
-    font-weight: bold;
-}
-
-
-/* Corregge il titolo "ULTIMI AGGIUNTI" */
-
-.section-title {
-    color: #555;
-}
-
-
-/* SEZIONE RECENTI */
-
-.recent-section {
-    padding: 20px;
-    background-color: #fafafa;
-}
-
-.section-title {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.recent-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* 4 copertine in fila */
-    gap: 10px;
-}
-
-.recent-item {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.2s;
-}
-
-.recent-item:hover {
-    transform: translateY(-3px);
-}
-
-.recent-item img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.recent-title {
-    font-size: 0.75rem;
-    color: #333;
-    margin-top: 5px;
-    text-align: center;
-    /* Taglia il testo se troppo lungo */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-}
-
-.empty-msg {
-    color: #999;
-    font-style: italic;
-    font-size: 0.9rem;
-}
-
-
-/* TASTO LOGOUT */
-
-.profile-actions {
-    padding: 20px;
-    border-top: 1px solid #eee;
-    background: white;
-    text-align: center;
-}
-
-.logout-btn {
-    background-color: #fff;
-    color: #dc3545;
-    border: 1px solid #dc3545;
-    padding: 8px 30px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.logout-btn:hover {
-    background-color: #dc3545;
-    color: white;
-}
-
-
-/* Mobile */
-
-@media (max-width: 768px) {
+    .search-input {
+        width: 100%;
+    }
     .details-grid {
         flex-direction: column;
     }

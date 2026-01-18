@@ -57,3 +57,10 @@ export const addToLibrary = async (manga: Manga, userId: string): Promise<void> 
 export const removeFromLibrary = async (id: number): Promise<void> => {
   await fetch(`${LOCAL_URL}/library/${id}`, { method: 'DELETE' });
 };
+
+// Restituisce i dettagli del singolo manga
+export async function getMangaById(id: string) {
+  const response = await fetch(`https://api.jikan.moe/v4/manga/${id}`);
+  const data = await response.json();
+  return data.data; 
+}

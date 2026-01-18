@@ -178,3 +178,117 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* --- PAGINA DETTAGLIO --- */
+
+.details-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.details-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-header h1 {
+    margin: 0;
+    color: #333;
+    font-size: 2rem;
+}
+
+.details-score {
+    background: #ffc107;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.details-grid {
+    display: flex;
+    gap: 40px;
+}
+
+.details-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.details-cover {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.big-btn {
+    width: 100%;
+    /* Bottone largo tutta la colonna */
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.info-box p {
+    margin: 10px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    color: #555;
+}
+
+.details-content {
+    flex-grow: 1;
+}
+
+.details-synopsis {
+    line-height: 1.8;
+    color: #444;
+    font-size: 1.05rem;
+    white-space: pre-wrap;
+}
+
+.score-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Sfondo nero trasparente */
+    color: #ffc107;
+    /* Giallo Stella */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    /* Assicura che stia sopra l'immagine */
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .details-grid {
+        flex-direction: column;
+    }
+    .details-sidebar {
+        width: 100%;
+    }
+}

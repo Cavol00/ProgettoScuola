@@ -5,6 +5,12 @@
       "name": "Dario",
       "email": "dario@gmail.com",
       "password": "dario"
+    },
+    {
+      "id": "8de9e862-5cff-4951-a3e4-e087cb458823",
+      "name": "franco",
+      "email": "franco@gmail.com",
+      "password": "franco"
     }
   ],
   "library": [
@@ -402,6 +408,212 @@
         }
       ],
       "userId": "6ce7f11c-cb99-4897-b657-3307f46cec68"
+    },
+    {
+      "id": "57b7",
+      "userId": "8de9e862-5cff-4951-a3e4-e087cb458823",
+      "mal_id": 2,
+      "title": "Berserk",
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/1/157897.jpg",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/1/157897t.jpg",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/1/157897l.jpg"
+        },
+        "webp": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/1/157897.webp",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/1/157897t.webp",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/1/157897l.webp"
+        }
+      },
+      "score": 9.47,
+      "type": "Manga",
+      "status": "Publishing",
+      "synopsis": "Guts, a former mercenary now known as the Black Swordsman, is out for revenge. After a tumultuous childhood, he finally finds someone he respects and believes he can trust, only to have everything fall apart when this person takes away everything important to Guts for the purpose of fulfilling his own desires. Now marked for death, Guts becomes condemned to a fate in which he is relentlessly pursued by demonic beings.\n\nSetting out on a dreadful quest riddled with misfortune, Guts, armed with a massive sword and monstrous strength, will let nothing stop him, not even death itself, until he is finally able to take the head of the one who stripped him—and his loved one—of their humanity.\n\n[Written by MAL Rewrite]\n\nIncluded one-shot:\nVolume 14: Berserk: The Prototype",
+      "published": {
+        "from": "1989-08-25T00:00:00+00:00",
+        "to": null,
+        "prop": {
+          "from": {
+            "day": 25,
+            "month": 8,
+            "year": 1989
+          },
+          "to": {
+            "day": null,
+            "month": null,
+            "year": null
+          }
+        },
+        "string": "Aug 25, 1989 to ?"
+      },
+      "authors": [
+        {
+          "mal_id": 1868,
+          "type": "people",
+          "name": "Miura, Kentarou",
+          "url": "https://myanimelist.net/people/1868/Kentarou_Miura"
+        },
+        {
+          "mal_id": 49592,
+          "type": "people",
+          "name": "Studio Gaga",
+          "url": "https://myanimelist.net/people/49592/Studio_Gaga"
+        }
+      ]
+    },
+    {
+      "id": "4582",
+      "userId": "8de9e862-5cff-4951-a3e4-e087cb458823",
+      "mal_id": 1706,
+      "title": "JoJo no Kimyou na Bouken Part 7: Steel Ball Run",
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/3/179882.jpg",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/3/179882t.jpg",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/3/179882l.jpg"
+        },
+        "webp": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/3/179882.webp",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/3/179882t.webp",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/3/179882l.webp"
+        }
+      },
+      "score": 9.33,
+      "type": "Manga",
+      "status": "Finished",
+      "synopsis": "In the American Old West, the world's greatest race is about to begin. Thousands line up in San Diego to travel over six thousand kilometers for a chance to win the grand prize of fifty million dollars. With the era of the horse reaching its end, contestants are allowed to use any kind of vehicle they wish. Competitors will have to endure grueling conditions, traveling up to a hundred kilometers a day through uncharted wastelands. The Steel Ball Run is truly a one-of-a-kind event.\n\nThe youthful Johnny Joestar, a crippled former horse racer, has come to San Diego to watch the start of the race. There he encounters Gyro Zeppeli, a racer with two steel balls at his waist instead of a gun. Johnny witnesses Gyro using one of his steel balls to unleash a fantastical power, compelling a man to fire his gun at himself during a duel. In the midst of the action, Johnny happens to touch the steel ball and feels a power surging through his legs, allowing him to stand up for the first time in two years. Vowing to find the secret of the steel balls, Johnny decides to compete in the race, and so begins his bizarre adventure across America on the Steel Ball Run.\n\n[Written by MAL Rewrite]",
+      "published": {
+        "from": "2004-01-19T00:00:00+00:00",
+        "to": "2011-04-19T00:00:00+00:00",
+        "prop": {
+          "from": {
+            "day": 19,
+            "month": 1,
+            "year": 2004
+          },
+          "to": {
+            "day": 19,
+            "month": 4,
+            "year": 2011
+          }
+        },
+        "string": "Jan 19, 2004 to Apr 19, 2011"
+      },
+      "authors": [
+        {
+          "mal_id": 2619,
+          "type": "people",
+          "name": "Araki, Hirohiko",
+          "url": "https://myanimelist.net/people/2619/Hirohiko_Araki"
+        }
+      ]
+    },
+    {
+      "id": "93c5",
+      "userId": "6ce7f11c-cb99-4897-b657-3307f46cec68",
+      "mal_id": 2,
+      "title": "Berserk",
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/1/157897.jpg",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/1/157897t.jpg",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/1/157897l.jpg"
+        },
+        "webp": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/1/157897.webp",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/1/157897t.webp",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/1/157897l.webp"
+        }
+      },
+      "score": 9.47,
+      "type": "Manga",
+      "status": "Publishing",
+      "synopsis": "Guts, a former mercenary now known as the Black Swordsman, is out for revenge. After a tumultuous childhood, he finally finds someone he respects and believes he can trust, only to have everything fall apart when this person takes away everything important to Guts for the purpose of fulfilling his own desires. Now marked for death, Guts becomes condemned to a fate in which he is relentlessly pursued by demonic beings.\n\nSetting out on a dreadful quest riddled with misfortune, Guts, armed with a massive sword and monstrous strength, will let nothing stop him, not even death itself, until he is finally able to take the head of the one who stripped him—and his loved one—of their humanity.\n\n[Written by MAL Rewrite]\n\nIncluded one-shot:\nVolume 14: Berserk: The Prototype",
+      "published": {
+        "from": "1989-08-25T00:00:00+00:00",
+        "to": null,
+        "prop": {
+          "from": {
+            "day": 25,
+            "month": 8,
+            "year": 1989
+          },
+          "to": {
+            "day": null,
+            "month": null,
+            "year": null
+          }
+        },
+        "string": "Aug 25, 1989 to ?"
+      },
+      "authors": [
+        {
+          "mal_id": 1868,
+          "type": "people",
+          "name": "Miura, Kentarou",
+          "url": "https://myanimelist.net/people/1868/Kentarou_Miura"
+        },
+        {
+          "mal_id": 49592,
+          "type": "people",
+          "name": "Studio Gaga",
+          "url": "https://myanimelist.net/people/49592/Studio_Gaga"
+        }
+      ]
+    },
+    {
+      "id": "e8fd",
+      "userId": "6ce7f11c-cb99-4897-b657-3307f46cec68",
+      "mal_id": 2,
+      "title": "Berserk",
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/1/157897.jpg",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/1/157897t.jpg",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/1/157897l.jpg"
+        },
+        "webp": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/1/157897.webp",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/1/157897t.webp",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/1/157897l.webp"
+        }
+      },
+      "score": 9.47,
+      "type": "Manga",
+      "status": "Publishing",
+      "synopsis": "Guts, a former mercenary now known as the Black Swordsman, is out for revenge. After a tumultuous childhood, he finally finds someone he respects and believes he can trust, only to have everything fall apart when this person takes away everything important to Guts for the purpose of fulfilling his own desires. Now marked for death, Guts becomes condemned to a fate in which he is relentlessly pursued by demonic beings.\n\nSetting out on a dreadful quest riddled with misfortune, Guts, armed with a massive sword and monstrous strength, will let nothing stop him, not even death itself, until he is finally able to take the head of the one who stripped him—and his loved one—of their humanity.\n\n[Written by MAL Rewrite]\n\nIncluded one-shot:\nVolume 14: Berserk: The Prototype",
+      "published": {
+        "from": "1989-08-25T00:00:00+00:00",
+        "to": null,
+        "prop": {
+          "from": {
+            "day": 25,
+            "month": 8,
+            "year": 1989
+          },
+          "to": {
+            "day": null,
+            "month": null,
+            "year": null
+          }
+        },
+        "string": "Aug 25, 1989 to ?"
+      },
+      "authors": [
+        {
+          "mal_id": 1868,
+          "type": "people",
+          "name": "Miura, Kentarou",
+          "url": "https://myanimelist.net/people/1868/Kentarou_Miura"
+        },
+        {
+          "mal_id": 49592,
+          "type": "people",
+          "name": "Studio Gaga",
+          "url": "https://myanimelist.net/people/49592/Studio_Gaga"
+        }
+      ]
     }
   ]
 }

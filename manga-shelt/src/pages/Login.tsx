@@ -1,47 +1,77 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export function Login() {
+  const [isRegistering, setIsRegistering] = useState(false); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [name, setName] = useState('');
   
-  const { login } = useAuth();
+  const { login, register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const user = await loginUser(email, password);
-    
-    if (user) {
-      login(user);
-      navigate('/'); // Vai alla home dopo il login
+    if (isRegistering) {
+      await register(name, email, password);
     } else {
-      setError('Email o password non validi (Usa: demo@test.com / 123)');
+      await login(email, password);
     }
+    // Se tutto va bene, vai alla home
+    navigate('/'); 
   };
 
   return (
-    <div className="login-container">
-      <h2>Accedi a Manga Shelt</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <input 
-          type="email" 
-          placeholder="Email" 
+    <div className="login-container" style={{ padding: '2rem', maxWidth: '400px', margin: '0 auto' }}>
+      <h2>{isRegistering ? 'Registrati' : 'Accedi'}</h2>
+      
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        
+        {/* Il campo Nome appare solo se ci stiamo registrando */}
+        {isRegistering && (
+          <input
+            type="text"
+            placeholder="Il tuo nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            style={{ padding: '10px' }}
+          />
+        )}
+
+        <input
+          type="email"
+          placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          style={{ padding: '10px' }}
         />
-        <input 
-          type="password" 
-          placeholder="Password" 
+
+        <input
+          type="password"
+          placeholder="Password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          style={{ padding: '10px' }}
         />
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Entra</button>
+
+        <button type="submit" style={{ padding: '10px', background: '#333', color: 'white', border: 'none', cursor: 'pointer' }}>
+          {isRegistering ? 'Crea Account' : 'Entra'}
+        </button>
       </form>
+
+      <p style={{ marginTop: '1rem', textAlign: 'center' }}>
+        {isRegistering ? 'Hai già un account? ' : 'Non hai un account? '}
+        <span 
+          style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}
+          onClick={() => setIsRegistering(!isRegistering)}
+        >
+          {isRegistering ? 'Accedi qui' : 'Registrati qui'}
+        </span>
+      </p>
     </div>
   );
 }

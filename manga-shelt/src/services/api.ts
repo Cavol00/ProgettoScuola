@@ -12,6 +12,14 @@ export const getTopManga = async (): Promise<Manga[]> => {
   return data.data;
 };
 
+// Ricerca manga per titolo
+ 
+export async function searchManga(query: string): Promise<Manga[]> {
+  const response = await fetch(`https://api.jikan.moe/v4/manga?q=${query}&limit=20`);
+  const data = await response.json();
+  return data.data;
+}
+
 // --- AUTH API  ---
 export const loginUser = async (email: string, password: string): Promise<User | null> => {
   // Cerchiamo nel db.json se esiste un utente con quella email e password

@@ -3,12 +3,10 @@
 
 /* --- CONTENITORE PRINCIPALE --- */
 
-.home-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    /* Sfondo generale leggermente grigio per far risaltare le card bianche */
-    background-color: #f4f4f4;
+.home-container h1 {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 
@@ -334,6 +332,164 @@
 .reset-btn:hover {
     background: #ddd;
     color: red;
+}
+
+
+/* --- PAGINA PROFILO --- */
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.profile-card {
+    background: white;
+    width: 500px;
+    /* Un po' più largo per far stare le copertine */
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+.profile-header {
+    padding: 30px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-avatar {
+    width: 70px;
+    height: 70px;
+    background-color: #333;
+    /* Grigio scuro elegante */
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+}
+
+.profile-card {
+    color: #333;
+    /* Grigio scuro per il testo base */
+}
+
+
+/* Assicuriamoci che anche i titoli e i link siano scuri */
+
+.profile-card h2,
+.profile-card h3,
+.profile-card p {
+    color: #333;
+}
+
+
+/* Corregge i titoli dei manga (link) sotto le immagini */
+
+.recent-title {
+    color: #333 !important;
+    /* !important forza il colore se c'è conflitto */
+    font-weight: bold;
+}
+
+
+/* Corregge il titolo "ULTIMI AGGIUNTI" */
+
+.section-title {
+    color: #555;
+}
+
+
+/* SEZIONE RECENTI */
+
+.recent-section {
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+.section-title {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 copertine in fila */
+    gap: 10px;
+}
+
+.recent-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.recent-item:hover {
+    transform: translateY(-3px);
+}
+
+.recent-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.recent-title {
+    font-size: 0.75rem;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+    /* Taglia il testo se troppo lungo */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.empty-msg {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+
+/* TASTO LOGOUT */
+
+.profile-actions {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: white;
+    text-align: center;
+}
+
+.logout-btn {
+    background-color: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 8px 30px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #dc3545;
+    color: white;
 }
 
 

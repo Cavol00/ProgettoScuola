@@ -16,11 +16,26 @@ export function Navbar() {
       <div className="nav-links">
         <Link to="/">Home</Link>
         {user ? (
-          <>
-            <Link to="/library">La mia Libreria</Link>
-            <span className="user-name">Ciao, {user.name}</span>
-            <button onClick={handleLogout} className="btn-logout">Esci</button>
-          </>
+          <div className="navbar-links">
+            <Link to="/">Home</Link>
+
+            {user ? (
+              <>
+                <Link to="/library">La mia Libreria</Link>
+
+                {/* IL NOME ORA È UN LINK AL PROFILO */}
+                <Link to="/profile" style={{ fontWeight: 'bold', color: '#ffd700' }}>
+                  Ciao, {user.name}
+                </Link>
+
+                {/* Lasciamo il tasto esci o lo togliamo dato che c'è nel profilo? 
+          Per ora lasciamolo per comodità */}
+                <button onClick={logout} className="logout-button">Esci</button>
+              </>
+            ) : (
+              <Link to="/login" className="login-button">Accedi</Link>
+            )}
+          </div>
         ) : (
           <Link to="/login" className="btn-login">Accedi</Link>
         )}

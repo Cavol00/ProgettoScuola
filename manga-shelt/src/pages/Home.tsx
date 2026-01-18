@@ -1,34 +1,35 @@
 import { useEffect, useState } from 'react';
-import { getTopManga, searchManga } from '../services/api'; 
+import { getTopManga, searchManga } from '../services/api';
 import { MangaCard } from '../components/MangaCard';
 import type { Manga } from '../types';
 
 export function Home() {
   const [mangas, setMangas] = useState<Manga[]>([]);
-  const [searchTerm, setSearchTerm] = useState(''); 
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  // Funzione per caricare i Top Manga (Default)
+
+  const [filterStatus, setFilterStatus] = useState('All');
+  const [filterType, setFilterType] = useState('All');
+
   const loadTop = async () => {
     setIsLoading(true);
     try {
       const data = await getTopManga();
       setMangas(data);
     } catch (error) {
-      console.error("Errore caricamento top manga", error);
+      console.error("Errore caricamento", error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Funzione per cercare 
   const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
     if (searchTerm.trim() === '') {
       loadTop();
       return;
     }
-
     setIsLoading(true);
     try {
       const results = await searchManga(searchTerm);
@@ -40,56 +41,88 @@ export function Home() {
     }
   };
 
-  // Appena apri la pagina carica i top manga
   useEffect(() => {
     loadTop();
   }, []);
 
+  // --- LA LOGICA DEL FILTRO ---
+  const filteredMangas = mangas.filter((manga) => {
+    
+    const matchStatus = 
+      filterStatus === 'All' ? true : 
+      filterStatus === 'Publishing' ? manga.status === 'Publishing' :
+      filterStatus === 'Finished' ? manga.status === 'Finished' : true;
+
+
+    const matchType = 
+      filterType === 'All' ? true :
+      filterType === 'Manga' ? manga.type === 'Manga' :
+      filterType === 'Manhwa' ? manga.type === 'Manhwa' : true;
+
+    return matchStatus && matchType;
+  });
+
   return (
     <div className="home-container">
-      {/* --- BARRA DI RICERCA --- */}
-      <div style={{ margin: '20px 0', textAlign: 'center' }}>
-        <form onSubmit={handleSearch} style={{ display: 'inline-flex', gap: '10px' }}>
+      
+      {/* BARRA DI RICERCA */}
+      <div className="search-container">
+        <form onSubmit={handleSearch} style={{ display: 'flex' }}>
           <input
             type="text"
-            placeholder="Cerca un manga (es. Naruto)..."
+            className="search-input"
+            placeholder="Cerca un manga (es. One Piece)..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{
-              padding: '10px',
-              width: '300px',
-              borderRadius: '5px',
-              border: '1px solid #ccc'
-            }}
           />
-          <button 
-            type="submit" 
-            style={{
-              padding: '10px 20px',
-              background: '#e50914', 
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontWeight: 'bold'
-            }}
-          >
-            Cerca
-          </button>
+          <button type="submit" className="search-button">Cerca</button>
         </form>
       </div>
 
-      {/* --- GRIGLIA DEI RISULTATI --- */}
+      {/* --- BARRA DEI FILTRI (Nuova) --- */}
+      <div className="filters-bar">
+        <div className="filter-group">
+          <label>Stato:</label>
+          <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+            <option value="All">Tutti</option>
+            <option value="Publishing">In Corso</option>
+            <option value="Finished">Terminato</option>
+          </select>
+        </div>
+
+        <div className="filter-group">
+          <label>Tipo:</label>
+          <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
+            <option value="All">Tutti</option>
+            <option value="Manga">Giapponese (Manga)</option>
+            <option value="Manhwa">Coreano (Manhwa)</option>
+          </select>
+        </div>
+        
+        {/* Tasto reset piccolino */}
+        {(filterStatus !== 'All' || filterType !== 'All') && (
+           <button 
+             onClick={() => {setFilterStatus('All'); setFilterType('All')}}
+             className="reset-btn"
+            >
+             Reset
+           </button>
+        )}
+      </div>
+
       <h1>{searchTerm ? `Risultati per "${searchTerm}"` : 'Top Manga del Momento'}</h1>
       
       {isLoading ? (
-        <p style={{ textAlign: 'center' }}>Caricamento in corso...</p>
+        <p style={{ textAlign: 'center', marginTop: '2rem' }}>Caricamento in corso...</p>
       ) : (
         <div className="manga-grid">
-          {mangas.map((manga) => (
-            <MangaCard key={manga.mal_id} manga={manga} />
-          ))}
-          {mangas.length === 0 && <p>Nessun manga trovato :(</p>}
+          {filteredMangas.length > 0 ? (
+            filteredMangas.map((manga) => (
+              <MangaCard key={manga.mal_id} manga={manga} />
+            ))
+          ) : (
+            <p>Nessun manga corrisponde ai filtri selezionati.</p>
+          )}
         </div>
       )}
     </div>

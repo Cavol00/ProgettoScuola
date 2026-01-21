@@ -1,83 +1,81 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getMangaById } from '../services/api';
-import { useAuth } from '../context/AuthContext';
-import type { Manga, LibraryItem } from '../types';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
+import '../App.css';
 
-export function MangaDetails() {
-  const { id } = useParams(); 
-  const [manga, setManga] = useState<Manga | null>(null);
-  const { user } = useAuth();
+interface MangaDetail {
+  mal_id: number;
+  title: string;
+  images: { jpg: { large_image_url: string } };
+  synopsis: string;
+  score: number;
+  genres: { name: string }[];
+  status: string;
+  year: number;
+  authors: { name: string }[];
+}
+
+export const MangaDetails = () => {
+  const { id } = useParams();
+  const location = useLocation(); 
+  
+  const passedManga = location.state?.manga;
+
+  const [manga, setManga] = useState<MangaDetail | null>(passedManga || null);
+  const [loading, setLoading] = useState(!passedManga); // Se abbiamo i dati, non carichiamo!
 
   useEffect(() => {
-    if (id) {
-      getMangaById(id).then((data) => setManga(data));
+    // Se abbiamo già i dati passati dalla Home, NON facciamo la fetch
+    if (passedManga) {
+      return; 
     }
-  }, [id]);
 
-  const addToLibrary = async () => {
-    if (!user || !manga) return alert("Devi fare il login!");
+    setLoading(true);
+    fetch(`https://api.jikan.moe/v4/manga/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setManga(data.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, [id, passedManga]);
 
-    const newItem: LibraryItem = {
-      userId: user.id,
-      mal_id: manga.mal_id,
-      title: manga.title,
-      images: manga.images,
-      score: manga.score,
-      type: manga.type,
-      status: manga.status,
-      synopsis: manga.synopsis,
-      published: manga.published,
-      authors: manga.authors
-    };
-
-    await fetch('http://localhost:3001/library', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newItem)
-    });
-    alert("Aggiunto alla libreria!");
-  };
-
-  if (!manga) return <div style={{textAlign:'center', marginTop: '50px'}}>Caricamento...</div>;
+  if (loading) return <div className="loading">Caricamento dettagli... ⏳</div>;
+  if (!manga) return <div className="error">Manga non trovato 😢</div>;
 
   return (
     <div className="details-container">
-      {/* INTESTAZIONE */}
-      <div className="details-header">
-        <h1>{manga.title}</h1>
-        <span className="details-score">★ {manga.score || 'N/A'}</span>
-      </div>
-
-      <div className="details-grid">
-        {/* COLONNA SINISTRA: FOTO E AZIONI */}
-        <div className="details-sidebar">
-          <img src={manga.images.jpg.image_url} alt={manga.title} className="details-cover" />
-          
-          <button className="add-button big-btn" onClick={addToLibrary}>
-            + Aggiungi alla Libreria
-          </button>
-
-          <div className="info-box">
-            <p><strong>Tipo:</strong> {manga.type}</p>
-            <p><strong>Stato:</strong> {manga.status}</p>
-            <p><strong>Volumi:</strong> {manga.volumes || '?'}</p>
-            <p><strong>Capitoli:</strong> {manga.chapters || '?'}</p>
-            <p><strong>Anno:</strong> {manga.published?.from ? new Date(manga.published.from).getFullYear() : 'N/A'}</p>
-          </div>
+      <Link to="/" className="back-btn">⬅ Torna alla Home</Link>
+      
+      <div className="details-card">
+        <div className="details-image">
+           {/* Jikan a volte usa image_url o large_image_url */}
+           <img 
+             src={manga.images?.jpg?.large_image_url || manga.images?.jpg?.image_url} 
+             alt={manga.title} 
+           />
         </div>
-
-        {/* COLONNA DESTRA: TRAMA E INFO */}
-        <div className="details-content">
-          <h3>Trama</h3>
-          <p className="details-synopsis">{manga.synopsis}</p>
-          
-          <div className="details-extra">
-            <h3>Autori</h3>
-            <p>{manga.authors.map(a => a.name).join(', ')}</p>
+        
+        <div className="details-info">
+          <h1>{manga.title}</h1>
+          <div className="badges">
+            <span className="badge-score">★ {manga.score}</span>
+            <span className="badge-status">{manga.status}</span>
           </div>
+
+          <div className="meta-grid">
+             <p><strong>Autori:</strong> {manga.authors?.map(a => a.name).join(', ') || 'N/A'}</p>
+             <p><strong>Generi:</strong> {manga.genres?.map(g => g.name).join(', ') || 'N/A'}</p>
+          </div>
+
+          <h3>Trama</h3>
+          <p className="synopsis-full">{manga.synopsis}</p>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default MangaDetails;

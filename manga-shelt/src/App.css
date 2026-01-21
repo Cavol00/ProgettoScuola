@@ -682,6 +682,91 @@ button:hover,
     box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
 }
 
+.details-info {
+    color: #333333;
+    text-align: left;
+    /* Allinea il testo a sinistra per leggibilità */
+}
+
+.details-info h1 {
+    color: #222222;
+    /* Quasi nero */
+    margin-bottom: 10px;
+}
+
+.details-info h3 {
+    color: #ff4081;
+    /* Rosa scuro per i titoletti */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+/* Paragrafi e trama */
+
+.details-info p,
+.synopsis-full {
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+.details-info strong {
+    color: #000000;
+    /* Nero assoluto */
+}
+
+.badge-score {
+    color: white;
+    /* Il testo dentro il badge deve rimanere bianco */
+}
+
+.badges {
+    display: flex;
+    /* Li mette in riga */
+    gap: 15px;
+    /* Crea SPAZIO tra il voto e lo status */
+    align-items: center;
+    /* Li allinea verticalmente al centro */
+    margin-bottom: 20px;
+}
+
+
+/* Stile specifico per lo status (es. "Publishing") */
+
+.badge-status {
+    background-color: #f3e5f5;
+    /* Un lilla molto chiaro */
+    color: #8e24aa;
+    /* Viola scuro per il testo */
+    padding: 6px 14px;
+    /* Un po' di "aria" interna */
+    border-radius: 50px;
+    /* Bordi arrotondati a pillola */
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    /* Lo rende tutto maiuscolo (più elegante) */
+    letter-spacing: 1px;
+}
+
+.badge-score {
+    background-color: #e3f2fd;
+    /* Azzurro molto chiaro */
+    color: #1565c0;
+    /* Blu scuro per il testo */
+    padding: 6px 14px;
+    /* Stessa spaziatura dell'altro badge */
+    border-radius: 50px;
+    /* Pillola */
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: inline-flex;
+    /* Per allineare bene la stella */
+    align-items: center;
+    gap: 5px;
+    /* Spazio tra stella e numero */
+}
+
 
 /* --- MOBILE --- */
 

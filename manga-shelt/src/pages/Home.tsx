@@ -1,130 +1,73 @@
-import { useEffect, useState } from 'react';
-import { getTopManga, searchManga } from '../services/api';
+import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query'; 
 import { MangaCard } from '../components/MangaCard';
-import type { Manga } from '../types';
+import '../App.css';
 
-export function Home() {
-  const [mangas, setMangas] = useState<Manga[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+// Definiamo l'interfaccia 
+interface Manga {
+  mal_id: number;
+  title: string;
+  images: { jpg: { image_url: string } };
+  score: number;
+  synopsis: string;
+  type: string;
+  status: string;
+  published: { from: string };
+  authors: { name: string }[];
+}
 
+// FUNZIONE CHE FA LA CHIAMATA 
+const fetchTopManga = async () => {
+  const res = await fetch('https://api.jikan.moe/v4/top/manga');
+  if (!res.ok) {
+    throw new Error('Errore nella rete');
+  }
+  const data = await res.json();
+  return data.data as Manga[]; // Restituiamo solo l'array dei manga
+};
 
-  const [filterStatus, setFilterStatus] = useState('All');
-  const [filterType, setFilterType] = useState('All');
+export const Home = () => {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const loadTop = async () => {
-    setIsLoading(true);
-    try {
-      const data = await getTopManga();
-      setMangas(data);
-    } catch (error) {
-      console.error("Errore caricamento", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { data: mangaList, isLoading, isError } = useQuery({
+    queryKey: ['topManga'], 
+    queryFn: fetchTopManga, 
+    });
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchTerm.trim() === '') {
-      loadTop();
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const results = await searchManga(searchTerm);
-      setMangas(results);
-    } catch (error) {
-      console.error("Errore ricerca", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadTop();
-  }, []);
-
-  // --- LA LOGICA DEL FILTRO ---
-  const filteredMangas = mangas.filter((manga) => {
-    
-    const matchStatus = 
-      filterStatus === 'All' ? true : 
-      filterStatus === 'Publishing' ? manga.status === 'Publishing' :
-      filterStatus === 'Finished' ? manga.status === 'Finished' : true;
-
-
-    const matchType = 
-      filterType === 'All' ? true :
-      filterType === 'Manga' ? manga.type === 'Manga' :
-      filterType === 'Manhwa' ? manga.type === 'Manhwa' : true;
-
-    return matchStatus && matchType;
-  });
+  const filteredManga = mangaList?.filter((manga) =>
+    manga.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="home-container">
       
-      {/* BARRA DI RICERCA */}
-      <div className="search-container">
-        <form onSubmit={handleSearch} style={{ display: 'flex' }}>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Cerca un manga (es. One Piece)..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button type="submit" className="search-button">Cerca</button>
-        </form>
+      {/* Search Bar */}
+      <div className="search-bar-container">
+        <input
+          type="text"
+          placeholder="Cerca un manga nella lista..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
       </div>
 
-      {/* --- BARRA DEI FILTRI (Nuova) --- */}
-      <div className="filters-bar">
-        <div className="filter-group">
-          <label>Stato:</label>
-          <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
-            <option value="All">Tutti</option>
-            <option value="Publishing">In Corso</option>
-            <option value="Finished">Terminato</option>
-          </select>
-        </div>
+      <h1>Top Manga del Momento 🏆</h1>
 
-        <div className="filter-group">
-          <label>Tipo:</label>
-          <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
-            <option value="All">Tutti</option>
-            <option value="Manga">Giapponese (Manga)</option>
-            <option value="Manhwa">Coreano (Manhwa)</option>
-          </select>
-        </div>
-        
-        {/* Tasto reset piccolino */}
-        {(filterStatus !== 'All' || filterType !== 'All') && (
-           <button 
-             onClick={() => {setFilterStatus('All'); setFilterType('All')}}
-             className="reset-btn"
-            >
-             Reset
-           </button>
-        )}
-      </div>
-
-      <h1>{searchTerm ? `Risultati per "${searchTerm}"` : 'Top Manga del Momento'}</h1>
+      {/* GESTIONE STATI (Caricamento ed Errore) */}
+      {isLoading && <p style={{textAlign: 'center'}}>Caricamento in corso... ⏳</p>}
       
-      {isLoading ? (
-        <p style={{ textAlign: 'center', marginTop: '2rem' }}>Caricamento in corso...</p>
-      ) : (
-        <div className="manga-grid">
-          {filteredMangas.length > 0 ? (
-            filteredMangas.map((manga) => (
-              <MangaCard key={manga.mal_id} manga={manga} />
-            ))
-          ) : (
-            <p>Nessun manga corrisponde ai filtri selezionati.</p>
-          )}
-        </div>
-      )}
+      {isError && <p style={{textAlign: 'center', color: 'red'}}>Errore nel caricamento dei dati! ❌</p>}
+
+      {/* GRIGLIA DEI MANGA */}
+      <div className="manga-grid">
+        {/* Usiamo filteredManga se esiste, altrimenti array vuoto */}
+        {filteredManga?.map((manga) => (
+          <MangaCard key={manga.mal_id} manga={manga} />
+        ))}
+      </div>
     </div>
   );
-}
+};
+
+export default Home;

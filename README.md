@@ -61,6 +61,7 @@ Utilizzato per simulare un database persistente.
 
 ## 📂 Struttura del Progetto
 
+```
 src/
 ├── components/   # Componenti riutilizzabili (MangaCard, Navbar, ecc.)
 ├── pages/        # Pagine principali (Home, MangaDetails, Library, Login)
@@ -68,7 +69,7 @@ src/
 ├── types/        # Definizioni TypeScript (Interfacce e Generics)
 ├── App.tsx       # Configurazione Routing
 └── main.tsx      # Entry point e Provider
-
+```
 ## ✅ Funzionalità Implementate
 
 Il progetto soddisfa i requisiti previsti dalle linee guida d'esame:

@@ -98,7 +98,7 @@
       ]
     },
     {
-      "id": 656,
+      "id": "656",
       "userId": "6ce7f11c-cb99-4897-b657-3307f46cec68",
       "title": "Vagabond",
       "images": {
@@ -130,6 +130,36 @@
           "type": "people",
           "name": "Yoshikawa, Eiji",
           "url": "https://myanimelist.net/people/5760/Eiji_Yoshikawa"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "userId": "6ce7f11c-cb99-4897-b657-3307f46cec68",
+      "title": "Monster",
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/3/258224.jpg",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/3/258224t.jpg",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/3/258224l.jpg"
+        },
+        "webp": {
+          "image_url": "https://cdn.myanimelist.net/images/manga/3/258224.webp",
+          "small_image_url": "https://cdn.myanimelist.net/images/manga/3/258224t.webp",
+          "large_image_url": "https://cdn.myanimelist.net/images/manga/3/258224l.webp"
+        }
+      },
+      "score": 9.16,
+      "synopsis": "Kenzou Tenma, a renowned Japanese neurosurgeon working in post-war Germany, faces a difficult choice: to operate on Johan Liebert, an orphan boy on the verge of death, or on the mayor of Düsseldorf. In the end, Tenma decides to gamble his reputation by saving Johan, effectively leaving the mayor for dead.\n\nAs a consequence of his actions, hospital director Heinemann strips Tenma of his position, and Heinemann's daughter Eva breaks off their engagement. Disgraced and shunned by his colleagues, Tenma loses all hope of a successful career—that is, until the mysterious killing of Heinemann gives him another chance.\n\nNine years later, Tenma is the head of the surgical department and close to becoming the director himself. Although all seems well for him at first, he soon becomes entangled in a chain of gruesome murders that have taken place throughout Germany. The culprit is a monster—the same one that Tenma saved on that fateful day nine years ago.\n\n[Written by MAL Rewrite]",
+      "type": "Manga",
+      "status": "Finished",
+      "year": 1994,
+      "authors": [
+        {
+          "mal_id": 1867,
+          "type": "people",
+          "name": "Urasawa, Naoki",
+          "url": "https://myanimelist.net/people/1867/Naoki_Urasawa"
         }
       ]
     }
